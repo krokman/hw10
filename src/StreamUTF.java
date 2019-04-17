@@ -17,7 +17,6 @@ public class StreamUTF {
 
 	public static void Count(String array) {
 		Stream.of(array.toLowerCase().split("[^\\p{L}\\p{Digit}_]+"))
-				.sorted()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
 				.entrySet()
 				.stream()
