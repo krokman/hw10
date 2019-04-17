@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -17,7 +16,6 @@ public class StreamUTF {
 	}
 
 	public static void Count(String array) {
-		Map<String, Long> finalMap = new LinkedHashMap<>();
 		Stream.of(array.toLowerCase().split("[^\\p{L}\\p{Digit}_]+"))
 				.sorted()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
@@ -26,8 +24,6 @@ public class StreamUTF {
 				.sorted(Map.Entry.<String, Long>comparingByKey())
 				.sorted(Map.Entry.<String, Long>comparingByValue().reversed())
 				.limit(10)
-				.forEachOrdered(e -> finalMap.put(e.getKey(), e.getValue()));
-
-		finalMap.forEach((key, value) -> System.out.println(key));
+				.forEachOrdered(o ->System.out.println(o.getKey()));
 	}
 }
