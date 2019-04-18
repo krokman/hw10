@@ -10,12 +10,13 @@ public class StreamUTF {
 	public static void main(String[] args) {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			Count(reader.readLine());
+			count(reader.readLine());
 		} catch (IOException e) {
+			System.out.println("Wrong Input");
 		}
 	}
 
-	public static void Count(String array) {
+	public static void count(String array) {
 		Stream.of(array.toLowerCase().split("[^\\p{L}\\p{Digit}_]+"))
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
 				.entrySet()
@@ -23,6 +24,6 @@ public class StreamUTF {
 				.sorted(Map.Entry.<String, Long>comparingByKey())
 				.sorted(Map.Entry.<String, Long>comparingByValue().reversed())
 				.limit(10)
-				.forEachOrdered(o ->System.out.println(o.getKey()));
+				.forEachOrdered(o -> System.out.println(o.getKey()));
 	}
 }
