@@ -11,8 +11,8 @@ public class StreamUTF {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			count(reader.readLine());
-		} catch (IOException e) {
-			System.out.println("Wrong Input");
+		} catch (IOException e ) {
+			e.printStackTrace();
 		}
 	}
 
